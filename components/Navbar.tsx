@@ -35,7 +35,7 @@ export function TopNav() {
           </Link>
 
           <div className="flex items-center gap-2">
-            <LanguageSwitcher compact />
+            <LanguageSwitcher />
             <button onClick={() => setMobileOpen(o => !o)} className="sm:hidden text-white/80 hover:text-white p-1">
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

@@ -1,41 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { TopNav, BottomNav } from "@/components/Navbar";
-import OfflineBanner from "@/components/OfflineBanner";
+import Sidebar from "@/components/dashboard/Sidebar";
+import Header from "@/components/dashboard/Header";
 import ServiceWorkerRegistrar from "@/components/ServiceWorkerRegistrar";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Kriya – Your Government, Your Rights",
-  description: "India's mobile-first rural citizen governance app. Find government schemes, check eligibility, track applications, and file grievances in 10 Indian languages.",
-  keywords: "government schemes, PM-KISAN, PMAY, Ayushman Bharat, rural India, Panchayat, eligibility checker",
-  authors: [{ name: "Kriya Team" }],
+  title: "Kriya – Rural Citizen Governance Dashboard",
+  description: "India's governance platform for rural citizens. Find schemes, check eligibility, track applications, file grievances in 10 languages.",
   manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "black-translucent",
-    title: "Kriya",
-  },
-  openGraph: {
-    title: "Kriya – Your Government, Your Rights",
-    description: "Find government schemes you qualify for. Check eligibility, track applications, file grievances.",
-    type: "website",
-    locale: "en_IN",
-  },
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Kriya" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: "#2D3A8C",
+  themeColor: "#1B4332",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -45,25 +24,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-        <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${inter.variable} antialiased bg-kriya-cream`}>
-        <a href="#main-content" className="skip-link">Skip to main content</a>
+      <body>
         <ServiceWorkerRegistrar />
-        <OfflineBanner />
-        <TopNav />
-        <main
-          id="main-content"
-          className="min-h-screen page-content"
-          style={{ paddingTop: "var(--nav-height)" }}
-        >
-          {children}
-        </main>
-        <BottomNav />
+        <Sidebar />
+        <div style={{ marginLeft: "var(--sidebar-width)" }}>
+          <Header />
+          <main
+            style={{ paddingTop: "var(--header-height)" }}
+            className="min-h-screen bg-surface-bg"
+          >
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

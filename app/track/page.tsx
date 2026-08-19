@@ -2,9 +2,11 @@ import ApplicationTracker from "@/components/ApplicationTracker";
 
 export default function TrackPage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-5">
-      <h1 className="text-xl font-black text-kriya-indigo-dark mb-1">Track Application</h1>
-      <p className="text-sm text-kriya-warm-gray mb-5">Enter your Application ID to check real-time status.</p>
+    <div className="p-6 max-w-3xl mx-auto space-y-4">
+      <div>
+        <h1 className="text-2xl font-black text-text-primary">Track Application</h1>
+        <p className="text-text-muted text-sm mt-0.5">Enter your Application ID to check real-time status</p>
+      </div>
       <ApplicationTracker />
     </div>
   );

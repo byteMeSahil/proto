@@ -2,9 +2,11 @@ import GrievanceForm from "@/components/GrievanceForm";
 
 export default function GrievancePage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-5">
-      <h1 className="text-xl font-black text-kriya-indigo-dark mb-1">File a Grievance</h1>
-      <p className="text-sm text-kriya-warm-gray mb-5">Register a complaint against a government service or scheme.</p>
+    <div className="p-6 max-w-3xl mx-auto space-y-4">
+      <div>
+        <h1 className="text-2xl font-black text-text-primary">File a Grievance</h1>
+        <p className="text-text-muted text-sm mt-0.5">Register a complaint against a government service or scheme</p>
+      </div>
       <GrievanceForm />
     </div>
   );
